@@ -1,0 +1,72 @@
+# Platform
+TARGET_BOARD_PLATFORM := msm8916
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno306
+TARGET_PLATFORM_DEVICE_BASE := /devices/soc.0/
+
+# Bootloader
+TARGET_BOOTLOADER_BOARD_NAME := MSM8916
+TARGET_NO_BOOTLOADER := true
+
+# Flags
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+
+# Architecture
+TARGET_ARCH := arm64
+TARGET_ARCH_VARIANT := armv8-a
+TARGET_CPU_ABI := arm64-v8a
+TARGET_CPU_ABI2 :=
+TARGET_CPU_VARIANT := cortex-a53
+
+TARGET_2ND_ARCH := arm
+TARGET_2ND_ARCH_VARIANT := armv7-a-neon
+TARGET_2ND_CPU_ABI := armeabi-v7a
+TARGET_2ND_CPU_ABI2 := armeabi
+TARGET_2ND_CPU_VARIANT := cortex-a53
+
+TARGET_USES_64_BIT_BINDER := true
+TARGET_INIT_VENDOR_LIB := libinit_msm
+
+# Boot image
+BOARD_KERNEL_CMDLINE :=  console=ttyHSL0,115200,n8 androidboot.console=ttyHSL0 androidboot.hardware=qcom msm_rtb.filter=0x237 ehci-hcd.park=3 androidboot.bootdevice=7824900.sdhci androidboot.selinux=permissive lpm_levels.sleep_disabled=1
+BOARD_KERNEL_BASE := 0x80000000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+
+TARGET_USES_UNCOMPRESSED_KERNEL := true
+TARGET_PREBUILT_KERNEL := device/wileyfox/crackling/Image
+TARGET_PREBUILT_DTB := device/wileyfox/crackling/dtb.img
+
+# Partitions
+BOARD_BOOTIMAGE_PARTITION_SIZE     := 33553920
+BOARD_CACHEIMAGE_PARTITION_SIZE    := 157285888
+BOARD_PERSISTIMAGE_PARTITION_SIZE  := 33553920
+BOARD_RECOVERYIMAGE_PARTITION_SIZE := 33553920
+BOARD_SYSTEMIMAGE_PARTITION_SIZE   := 1610612224
+BOARD_USERDATAIMAGE_PARTITION_SIZE := 13295385600
+BOARD_FLASH_BLOCK_SIZE := 131072
+
+# Use this flag if the board has a ext4 partition larger than 2gb
+BOARD_HAS_LARGE_FILESYSTEM := true
+TARGET_USERIMAGES_USE_EXT4 := true
+TARGET_USERIMAGES_USE_F2FS := true
+BOARD_SUPPRESS_SECURE_ERASE := true
+BOARD_CUSTOM_BOOTIMG_MK :=  device/wileyfox/crackling/bootimg.mk
+
+# TWRP specific build flags
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
+TARGET_RECOVERY_QCOM_RTC_FIX := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/msm_hsusb/gadget/lun%d/file"
+TW_BRIGHTNESS_PATH := "/sys/class/leds/lcd-backlight/brightness"
+TW_MAX_BRIGHTNESS := 255
+TW_DEFAULT_BRIGHTNESS := 162
+TW_MTP_DEVICE := "/dev/mtp_usb"
+
+# Encryption support
+TW_INCLUDE_CRYPTO := true
+TARGET_KEYMASTER_WAIT_FOR_QSEE := true
+TARGET_HW_DISK_ENCRYPTION := true
+#TWRP_INCLUDE_LOGCAT := true
+#TARGET_USES_LOGD := true
