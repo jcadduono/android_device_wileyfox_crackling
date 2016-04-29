@@ -72,6 +72,7 @@ on init
     # set up crypto libs
     mkdir /vendor/firmware
     mkdir /vendor/firmware/keymaster
+    symlink /vendor/lib64 /vendor/lib
     symlink /firmware/image/keymaste.b00 /vendor/firmware/keymaster/keymaster.b00
     symlink /firmware/image/keymaste.b01 /vendor/firmware/keymaster/keymaster.b01
     symlink /firmware/image/keymaste.b02 /vendor/firmware/keymaster/keymaster.b02
